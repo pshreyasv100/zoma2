@@ -7,7 +7,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="search-content">
   <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-list>
     <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
