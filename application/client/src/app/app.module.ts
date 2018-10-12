@@ -7,9 +7,9 @@ import { RegisterPage } from '../pages/register/register';
 import { Auth } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage'
 import { ManagerHomePage } from '../pages/manager-home/manager-home';
-
+import { SearchPage } from '../pages/search/search';
 import { MyApp } from './app.component';
- 
+
 @NgModule({
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -18,7 +18,8 @@ import { MyApp } from './app.component';
   declarations: [
     MyApp,
     RegisterPage,
-    ManagerHomePage
+    ManagerHomePage,
+    SearchPage,
   ],
   imports: [
     BrowserModule,

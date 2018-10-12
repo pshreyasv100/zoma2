@@ -116,14 +116,14 @@ exports.roleAuthorization = function (roles) {
 }
 
 exports.search =  function (req,res,next) {
-  restaurant.find(function(err,rest)){
+  restaurant.find(function(err,rest){
 
     if(err)
     res.send(err);
 
     res.json(rest);
 
-  }
+  });
 
 
 }
