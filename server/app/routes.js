@@ -3,6 +3,7 @@ var AuthenticationController = require('./controllers/authentication'),
     passportService = require('../config/passport'),
     passport = require('passport');
 
+
 var requireAuth = passport.authenticate('jwt', {
         session: false
     }),
@@ -10,7 +11,7 @@ var requireAuth = passport.authenticate('jwt', {
         session: false
     });
 
-module.exports = function (app) {
+module.exports = function (app){
 
     var apiRoutes = express.Router(),
         authRoutes = express.Router();
@@ -25,7 +26,12 @@ module.exports = function (app) {
         res.send({
             content: 'Success'
         });
-    });
+
+
+        /* added this */
+        authRoutes.get('/restaurant_list', requireAuth, AuthenticationController.search);
+
+  });
 
     // Todo Routes
     // apiRoutes.use('/todos', todoRoutes);

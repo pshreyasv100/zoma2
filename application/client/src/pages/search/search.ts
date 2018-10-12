@@ -18,15 +18,28 @@ export class SearchPage {
   /**
    * Perform a service for the proper items.
    */
-  getItems(ev) {
-    let val = ev.target.value;
-    if (!val || !val.trim()) {
-      this.currentItems = [];
-      return;
-    }
-    this.currentItems = this.items.query({
-      name: val
-    });
+  search() {
+
+    let credentials = {name:this.restaurant_name}
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let token_1 = this.storage.get('token')
+    headers.append('jwt',token_1)
+
+    this.http.post('http://zoma2.rohin.me/api/auth/restaurant_list', JSON.stringify(credentials), {headers: headers})
+      .subscribe(res => {
+
+        let data = res.json();
+        console.log(data);
+        //this.token = data.token;
+
+        /*this.storage.set('token', data.token);*/
+        resolve(data);
+
+        resolve(res.json());
+      }, (err) => {
+        reject(err);
+      });
   }
 
   /**

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { Auth } from '../../providers/auth/auth';
 import { ManagerHomePage } from '../manager-home/manager-home';
- 
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -15,14 +15,14 @@ export class LoginPage {
   //registerCredentials = { email: '', password: '' };
   email: string;
   password: string;
- 
+
   constructor(private nav: NavController , public authService: Auth, private alertCtrl: AlertController, private loadingCtrl: LoadingController, public http:HttpClient) { }
- 
+
   public createAccount() {
   this.nav.push(RegisterPage);
-  
+
   }
- 
+
   public login() {
 
   let postParams = {email : this.email, password: this.password};
@@ -41,9 +41,9 @@ export class LoginPage {
     console.log(err);
   });
 
-  
+
   }
- 
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',

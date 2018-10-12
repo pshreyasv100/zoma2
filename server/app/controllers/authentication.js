@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken');
 var User = require('../models/user');
+var restaurant = require('../models/restaurant_list')
 var authConfig = require('../../config/auth');
 
 function generateToken(user) {
@@ -111,5 +112,18 @@ exports.roleAuthorization = function (roles) {
         });
 
     }
+
+}
+
+exports.search =  function (req,res,next) {
+  restaurant.find(function(err,rest)){
+
+    if(err)
+    res.send(err);
+
+    res.json(rest);
+
+  }
+
 
 }
